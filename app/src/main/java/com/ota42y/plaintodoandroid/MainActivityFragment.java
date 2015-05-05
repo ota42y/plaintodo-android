@@ -16,10 +16,6 @@ import com.dropbox.client2.session.AppKeyPair;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment implements View.OnClickListener {
-    private static final String APP_KEY = "";
-    private static final String APP_SECRET = "";
-    private static final String ACCESS_TOKEN = "";
-
     Button button;
     DropboxAPI<AndroidAuthSession> mApi;
 
@@ -50,11 +46,11 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     }
 
     private void loadAuth(AndroidAuthSession session) {
-        session.setOAuth2AccessToken(ACCESS_TOKEN);
+        session.setOAuth2AccessToken(getString(R.string.dropbox_access_token));
     }
 
     private AndroidAuthSession buildSession() {
-        AppKeyPair appKeyPair = new AppKeyPair(APP_KEY, APP_SECRET);
+        AppKeyPair appKeyPair = new AppKeyPair(getString(R.string.dropbox_app_key), getString(R.string.dropbox_app_secret));
 
         AndroidAuthSession session = new AndroidAuthSession(appKeyPair);
         loadAuth(session);
